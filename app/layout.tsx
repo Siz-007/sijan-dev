@@ -4,6 +4,8 @@ import './globals.css'
 import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -12,7 +14,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sijandev.vercel.app/'),
+  metadataBase: new URL('https://sijan-dev.vercel.app/'),
   alternates: {
     canonical: '/'
   },
@@ -57,6 +59,8 @@ export default function RootLayout({
             </div>
           </div>
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

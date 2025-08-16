@@ -1,1 +1,1 @@
-export const WEBSITE_URL = 'https://sijandev.vercel.app'
+export const WEBSITE_URL = 'https://sijan-dev.vercel.app'
