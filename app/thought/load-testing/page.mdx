@@ -1,0 +1,119 @@
+export const metadata = {
+  title: 'Load Testing Applications with OpenID Connect Authentication Using JMeter',
+  description:
+    'How to load test applications that use OpenID Connect authentication with JMeter?',
+  category: 'Performance Testing',
+  alternates: {
+    canonical: '/thought/load-testing',
+  },
+};
+
+<Cover
+  src="/images/load-testing.jpg"
+  alt="Load Testing"
+  caption="Load Testing"
+/>
+_Category: Blog_
+# Load Testing Applications with OpenID Connect Authentication Using JMeter
+
+Authentication is a critical component in modern applications, and OpenID Connect (OIDC) has become a widely adopted protocol for secure user authentication. However, load testing OIDC flows can be challenging due to dynamic tokens, JavaScript-based login forms, and provider-specific restrictions.
+
+---
+
+## Understanding OpenID Connect (OIDC) 🌐🔑
+
+OIDC is an authentication layer on top of OAuth 2.0 that enables clients to verify user identity via an authorization server. It provides ID tokens (JWTs) and access tokens for secure resource access.
+
+**Key Components of OIDC:**
+
+- **Client** — The application requesting authentication.
+- **Authorization Server** — Issues tokens and handles authentication.
+- **Resource Owner** — The user being authenticated.
+- **Identity Token** — Contains user details.
+- **Access Token** — Used to access protected APIs.
+
+---
+
+## Setting Up JMeter for OIDC Authentication 🚀
+
+JMeter allows simulation of multiple user logins to test authentication under load. Here’s a step-by-step approach.
+
+### 1. Authorization Request
+
+The client redirects the user's browser to the Authorization Endpoint.
+
+```http
+GET https://authorization-server.com/authorize?response_type=code&client_id=your-client-id&redirect_uri=your-redirect-uri&scope=openid%20profile
+```
+
+- Use a **Regex Extractor** in JMeter to capture dynamic parameters like `nonce` and `state`.
+
+### 2. User Authentication & Token Request
+
+- Submit credentials to the Login Endpoint.
+- Obtain an Authorization Code.
+- Exchange the Authorization Code for ID and Access Tokens.
+
+```http
+POST https://authorization-server.com/token
+Headers: 
+  Content-Type: application/x-www-form-urlencoded
+Body: 
+  client_id=your-client-id&client_secret=your-secret&grant_type=authorization_code&code=auth-code&redirect_uri=your-redirect-uri
+```
+
+- Capture tokens using **Regex Extractor** or **JSON Extractor**.
+
+### 3. Access Protected Resources
+
+Use the Access Token to call protected APIs.
+
+```http
+GET https://your-api.com/protected-resource
+Headers: 
+  Authorization: Bearer your-access-token
+```
+
+---
+
+## Common Issues & Fixes 🔧
+
+### Correlation Issues
+- **Problem:** Dynamic parameters like `nonce` and `state` are required for OIDC.
+- **Fix:** Extract and pass all dynamic values correctly using Postprocessors.
+
+### JavaScript-Based Login Forms
+- **Problem:** Some providers use JS-rendered forms, which JMeter cannot handle.
+- **Fix:** Automate login with Selenium WebDriver or use an API-based login.
+
+### Provider-Specific Load Testing Policies
+- **Problem:** Rate limits or restrictions on automated tests.
+- **Fix:** Check provider documentation and use dedicated test environments.
+
+---
+
+## Further Reading
+
+- [OpenID Connect — How to Load Test with JMeter](https://www.blazemeter.com/blog/openid-connect-jmeter)
+- [Auth0 Load Testing Policies](https://auth0.com/docs/troubleshoot/customer-support/operational-policies/load-testing-policy)
+- [Correlation Issues](https://stackoverflow.com/questions/48392725/jmeter-with-openid-connect-authentication)
+- [JavaScript-Based Login Forms](https://community.auth0.com/t/cant-login-with-postman-jmeter-since-login-form-is-javascript-are-there-workarounds-to-get-code-and-state-response/57304)
+
+---
+
+## Conclusion 💭
+
+Load testing OIDC authentication flows in JMeter requires handling dynamic tokens, JS-based logins, and respecting provider restrictions. Correct extraction, automation, and careful planning ensure realistic and effective testing.
+
+---
+
+### Questions for Reflection
+
+- Have you faced challenges while load testing OIDC authentication?
+- How do you handle JS-based login forms in load testing?
+
+---
+
+### Music for Inspiration
+
+Listening to music while working? Check out _"Experience"_ by Ludovice Einaudi - it’s perfect for concentration and mindfulness.
