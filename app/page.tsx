@@ -3,6 +3,7 @@ import { motion } from 'motion/react'
 import { XIcon } from 'lucide-react'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Magnetic } from '@/components/ui/magnetic'
+import { DownloadIcon } from 'lucide-react'
 import {
   MorphingDialog,
   MorphingDialogTrigger,
@@ -157,10 +158,11 @@ export default function Personal() {
                 className="from-zinc-900 via-zinc-800 to-zinc-700 blur-2xl dark:from-zinc-100 dark:via-zinc-200 dark:to-zinc-50"
                 size={64}
               />
-              <div className="relative flex-row rounded-[15px] bg-white px-10 p-4 dark:bg-zinc-950">
-                <h4 className="font-normal dark:text-zinc-100">
+              <div className="relative flex-row flex items-center gap-2 rounded-[15px] bg-white px-10 p-4 dark:bg-zinc-950">
+                <h4 className="font-medium dark:text-zinc-100">
                   Download CV
                 </h4>
+                <DownloadIcon className="h-5 w-5 dark:text-zinc-100" />
               </div>
             </a>
         </div>
@@ -187,7 +189,7 @@ export default function Personal() {
                   {project.name}
                   <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
                 </a>
-                <p className="text-base text-zinc-600 dark:text-zinc-400">
+                <p className="text-base text-zinc-600 italic dark:text-zinc-400">
                   {project.description}
                 </p>
               </div>
@@ -244,10 +246,10 @@ export default function Personal() {
         transition={TRANSITION_SECTION}
       >
         <div className="flex-1">
-          <p className="text-zinc-600 dark:text-zinc-400">
+          <p className="text-zinc-600 italic dark:text-zinc-400">
             notes, blogs, rants, misc 
           </p>
-          <p className="text-zinc-600 dark:text-zinc-400">
+          <p className="text-zinc-600 italic dark:text-zinc-400">
             unstructured, mostly unfiltered
           </p>
         </div>
@@ -274,7 +276,7 @@ export default function Personal() {
                   <h4 className="font-normal dark:text-zinc-100">
                     {post.title}
                   </h4>
-                  <p className="text-zinc-500 dark:text-zinc-400">
+                  <p className="text-zinc-500 italic dark:text-zinc-400">
                     {post.description}
                   </p>
                 </div>
@@ -282,6 +284,15 @@ export default function Personal() {
             ))}
           </AnimatedBackground>
         </div>
+        <div className="flex justify-end mt-4">
+            <a
+              className="font-base group relative inline-block font-[450] text-zinc-900 dark:text-zinc-50"
+              href={'/thought'}
+              >
+              View All
+              <span className="absolute bottom-0.5 left-0 block h-[1px] w-full max-w-0 bg-zinc-900 dark:bg-zinc-50 transition-all duration-200 group-hover:max-w-full"></span>
+            </a>
+          </div>
       </motion.section>
 
       <motion.section

@@ -72,8 +72,8 @@ export function Footer() {
       <div className="flex items-center justify-between">
         <a href="/" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
-            <span>© 2025</span>
-            <span>Version 1.0.0</span>
+            <span>© 2025 Sijan Dev</span>
+            <span>Version 1.0.1</span>
           </TextLoop>
         </a>
         <div className="text-xs text-zinc-400">

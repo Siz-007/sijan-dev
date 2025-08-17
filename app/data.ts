@@ -60,13 +60,13 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     title: 'Load Testing Applications with OpenID Connect Authentication Using JMeter',
     description: 'How to load test applications that use OpenID Connect authentication with JMeter?',
-    link: '/thought/load-testing',
+    link: '/thought/content/load-testing',
     uid: 'blog-1',
   },
   {
     title: 'The Light They Forget',
     description: 'Poem - The Light They Forget',
-    link: '/thought/the-light-they-forget',
+    link: '/thought/content/the-light-they-forget',
     uid: 'blog-2',
   }
 ]
