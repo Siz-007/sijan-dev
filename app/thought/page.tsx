@@ -1,7 +1,7 @@
 'use client'
 import { motion } from 'motion/react'
 import { AnimatedBackground } from '@/components/ui/animated-background'
-import { BLOG_POSTS, EMAIL, SOCIAL_LINKS } from '../data'
+import { BLOG_POSTS_ALL, EMAIL, SOCIAL_LINKS } from '../data'
 import Link from 'next/link'
 import { Magnetic } from '@/components/ui/magnetic'
 
@@ -95,7 +95,7 @@ export default function ThoughtPage() {
               duration: 0.2,
             }}
           >
-            {BLOG_POSTS.map((post) => (
+            {BLOG_POSTS_ALL.map((post) => (
               <Link
                 key={post.uid}
                 className="-mx-3 rounded-xl px-3 py-3"
